@@ -1,0 +1,47 @@
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white d-flex align-items-center">
+      <i class="fas fa-shopping-cart me-2"></i>
+      <h5 class="mb-0">Carrinho de Compras</h5>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of carrinho">
+        <div>
+          <i class="fas fa-box-open text-secondary me-2"></i>
+          {{ item.nome }}
+        </div>
+        <span class="badge bg-success fs-6">R$ {{ item.preco }}</span>
+      </li>
+    </ul>
+
+    <div class="card-body">
+      <label class="form-label">
+        <i class="fas fa-credit-card me-1"></i> Forma de Pagamento
+      </label>
+      <select class="form-select mb-3" [(ngModel)]="formaPagamento">
+        <option value="credito">Cartão de Crédito</option>
+        <option value="debito">Cartão de Débito</option>
+        <option value="pix">Pix</option>
+        <option value="boleto">Boleto Bancário</option>
+      </select>
+
+      <div *ngIf="formaPagamento === 'credito'">
+        <label class="form-label">
+          <i class="fas fa-list-ol me-1"></i> Parcelas
+        </label>
+        <select class="form-select mb-3" [(ngModel)]="parcelas">
+          <option *ngFor="let p of opcoesParcelas" [value]="p">{{ p }}x de R$ {{ (total() / p) | number:'1.2-2' }}</option>
+        </select>
+      </div>
+
+      <div class="text-end">
+        <p class="mb-1">Subtotal: <strong>R$ {{ total() | number:'1.2-2' }}</strong></p>
+        <p *ngIf="formaPagamento === 'credito'">Total Parcelado: <strong>{{ parcelas }}x de R$ {{ (total() / parcelas) | number:'1.2-2' }}</strong></p>
+        <button class="btn btn-success mt-3" (click)="finalizarCompra()">
+          <i class="fas fa-check-circle me-1"></i> Finalizar Compra
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

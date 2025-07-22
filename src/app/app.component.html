@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-4">
+  <a class="navbar-brand d-flex align-items-center" href="#">
+    
+    <img src="assets/favicon.png" alt="Logo" width="30" height="30" class="me-2">
+    🛒 Loja do Alison
+  </a>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarContent">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/">
+          <i class="fas fa-home me-1"></i> Início
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/cadastrar">
+          <i class="fas fa-plus me-1"></i> Cadastrar Produto
+        
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/carrinho">
+          <i class="fas fa-shopping-cart me-1"></i> Carrinho
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
