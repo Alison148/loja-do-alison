@@ -1,0 +1,51 @@
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+label.form-label {
+  font-weight: 500;
+  color: #333;
+}
+
+input.form-control, select.form-select {
+  border-radius: 8px;
+}
+
+ul.list-group {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  font-size: 0.95rem;
+}
+
+.text-end p {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+}
+
+.btn-success {
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.btn-success i {
+  margin-right: 6px;
+}
+.btn-danger {
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+}

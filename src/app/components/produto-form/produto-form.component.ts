@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Produto } from '../../models/produto.model';
 import { ProdutoService } from '../../services/produto.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-produto-form',
@@ -13,7 +14,13 @@ export class ProdutoFormComponent {
 
   salvar() {
     this.service.adicionarProduto(this.produto);
-    alert('Produto cadastrado!');
+    Swal.fire({
+      icon: 'success',
+      title: 'Sucesso',
+      text: 'Produto cadastrado com sucesso!',
+      timer: 2000,
+      showConfirmButton: false
+    });
     this.produto = { id: 0, nome: '', preco: 0, descricao: '', quantidade: 1 };
   }
 }

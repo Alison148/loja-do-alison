@@ -1,8 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-4">
   <a class="navbar-brand d-flex align-items-center" href="#">
-    
-    <img src="assets/favicon.png" alt="Logo" width="30" height="30" class="me-2">
-    🛒 Loja do Alison
+    <strong>🛒 Antunes Online</strong>
   </a>
 
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
@@ -19,7 +17,6 @@
       <li class="nav-item">
         <a class="nav-link d-flex align-items-center" routerLink="/cadastrar">
           <i class="fas fa-plus me-1"></i> Cadastrar Produto
-        
         </a>
       </li>
       <li class="nav-item">
@@ -27,8 +24,22 @@
           <i class="fas fa-shopping-cart me-1"></i> Carrinho
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" routerLink="/pdv">
+          <i class="fas fa-cash-register me-1"></i> Caixa
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
 
+<!-- Rotas da aplicação -->
 <router-outlet></router-outlet>
+
+<!-- PDV Fixo direto na tela principal (opcional) -->
+<!-- <app-pdv></app-pdv> -->
+<footer class="bg-dark text-white text-center py-3">
+  <div class="container">
+    <p class="mb-0">© 2025 Antunes Online. Todos os direitos reservados.</p>
+    <p class="mb-0">
+      Desenvolvido por  <a href="Alison Antunes Miranda" class="text-white">Alison Antunes Miranda</a>

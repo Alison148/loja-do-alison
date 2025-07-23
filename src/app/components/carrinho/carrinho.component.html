@@ -9,39 +9,20 @@
       <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of carrinho">
         <div>
           <i class="fas fa-box-open text-secondary me-2"></i>
-          {{ item.nome }}
+          {{ item.nome }} (x{{ item.quantidade || 1 }})
         </div>
-        <span class="badge bg-success fs-6">R$ {{ item.preco }}</span>
+        <span class="badge bg-success fs-6">R$ {{ item.preco * (item.quantidade || 1) }}</span>
       </li>
     </ul>
 
     <div class="card-body">
-      <label class="form-label">
-        <i class="fas fa-credit-card me-1"></i> Forma de Pagamento
-      </label>
-      <select class="form-select mb-3" [(ngModel)]="formaPagamento">
-        <option value="credito">Cartão de Crédito</option>
-        <option value="debito">Cartão de Débito</option>
-        <option value="pix">Pix</option>
-        <option value="boleto">Boleto Bancário</option>
-      </select>
+      <p class="fs-5">
+        Total: <strong>R$ {{ total().toFixed(2) }}</strong>
+      </p>
 
-      <div *ngIf="formaPagamento === 'credito'">
-        <label class="form-label">
-          <i class="fas fa-list-ol me-1"></i> Parcelas
-        </label>
-        <select class="form-select mb-3" [(ngModel)]="parcelas">
-          <option *ngFor="let p of opcoesParcelas" [value]="p">{{ p }}x de R$ {{ (total() / p) | number:'1.2-2' }}</option>
-        </select>
-      </div>
-
-      <div class="text-end">
-        <p class="mb-1">Subtotal: <strong>R$ {{ total() | number:'1.2-2' }}</strong></p>
-        <p *ngIf="formaPagamento === 'credito'">Total Parcelado: <strong>{{ parcelas }}x de R$ {{ (total() / parcelas) | number:'1.2-2' }}</strong></p>
-        <button class="btn btn-success mt-3" (click)="finalizarCompra()">
-          <i class="fas fa-check-circle me-1"></i> Finalizar Compra
-        </button>
-      </div>
+      <button class="btn btn-warning w-100 mt-3" (click)="enviarParaPdV()">
+        <i class="fas fa-cash-register me-1"></i> Ir para Caixa
+      </button>
     </div>
   </div>
 </div>

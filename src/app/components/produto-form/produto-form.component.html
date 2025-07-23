@@ -1,61 +1,99 @@
-<div class="container mt-4">
-  <div class="card shadow">
-    <div class="card-header bg-success text-white d-flex align-items-center">
-      <i class="fas fa-plus-circle me-2"></i>
-      <h5 class="mb-0">Cadastrar Novo Produto</h5>
+<div class="container mt-5">
+  <div class="card shadow rounded-4 border-0">
+    <div class="card-header bg-gradient bg-success text-white d-flex align-items-center rounded-top-4">
+      <i class="fas fa-box-open fa-lg me-2"></i>
+      <h5 class="mb-0 fw-semibold">Cadastro de Produto</h5>
     </div>
-    <div class="card-body">
-      <form (ngSubmit)="salvar()">
-        <div class="mb-3">
-          <label for="nome" class="form-label">
-            <i class="fas fa-box me-1 text-secondary"></i> Nome do Produto
+    <div class="card-body p-4">
+      <form (ngSubmit)="salvar()" #form="ngForm" novalidate>
+        <!-- Nome -->
+        <div class="mb-4">
+          <label for="nome" class="form-label fw-semibold">
+            <i class="fas fa-box text-primary me-2"></i> Nome do Produto
           </label>
           <input
             type="text"
             id="nome"
             name="nome"
-            class="form-control"
+            class="form-control form-control-lg rounded-3 shadow-sm"
             [(ngModel)]="produto.nome"
             placeholder="Ex: Monitor Gamer"
             required
+            [ngClass]="{'is-invalid': form.submitted && !form.controls['nome']?.valid}"
           />
+          <div class="invalid-feedback">Nome é obrigatório.</div>
         </div>
 
-        <div class="mb-3">
-          <label for="preco" class="form-label">
-            <i class="fas fa-dollar-sign me-1 text-secondary"></i> Preço
+        <!-- Preço -->
+        <div class="mb-4">
+          <label for="preco" class="form-label fw-semibold">
+            <i class="fas fa-dollar-sign text-warning me-2"></i> Preço
           </label>
           <input
             type="number"
             id="preco"
             name="preco"
-            class="form-control"
+            class="form-control form-control-lg rounded-3 shadow-sm"
             [(ngModel)]="produto.preco"
             placeholder="Ex: 999.99"
             required
+            min="0"
+            step="0.01"
+            [ngClass]="{'is-invalid': form.submitted && !form.controls['preco']?.valid}"
           />
+          <div class="invalid-feedback">Informe um preço válido.</div>
         </div>
+        <!-- Quantidade -->
+<div class="mb-4">
+  <label for="quantidade" class="form-label fw-semibold">
+    <i class="fas fa-sort-numeric-up text-info me-2"></i> Quantidade em Estoque
+  </label>
+  <input
+    type="number"
+    id="quantidade"
+    name="quantidade"
+    class="form-control form-control-lg rounded-3 shadow-sm"
+    [(ngModel)]="produto.quantidade"
+    placeholder="Ex: 10"
+    required
+    min="0"
+    [ngClass]="{'is-invalid': form.submitted && !form.controls['quantidade']?.valid}"
+  />
+  <div class="invalid-feedback">Informe a quantidade disponível.</div>
+</div>
+        
 
-        <div class="mb-3">
-          <label for="descricao" class="form-label">
-            <i class="fas fa-align-left me-1 text-secondary"></i> Descrição
+        <!-- Descrição -->
+        <div class="mb-4">
+          <label for="descricao" class="form-label fw-semibold">
+            <i class="fas fa-align-left text-secondary me-2"></i> Descrição
           </label>
           <textarea
             id="descricao"
             name="descricao"
-            class="form-control"
+            class="form-control form-control-lg rounded-3 shadow-sm"
             [(ngModel)]="produto.descricao"
-            rows="3"
+            rows="4"
             placeholder="Ex: Tela 27'', Full HD, 144Hz, 1ms..."
           ></textarea>
         </div>
 
+        <!-- Botão -->
         <div class="text-end">
-          <button type="submit" class="btn btn-success px-4">
-            <i class="fas fa-save me-1"></i> Salvar Produto
+          <button type="submit" class="btn btn-success btn-lg px-5 rounded-pill shadow-sm">
+            <i class="fas fa-save me-2"></i>Registrar Produto
           </button>
         </div>
       </form>
     </div>
   </div>
 </div>
+        <!-- Botão Limpar -->
+        <div class="text-end mt-3">
+          <button type="button" class="btn btn-secondary btn-lg px-5 rounded-pill shadow-sm" (click)="limpar()">
+            <i class="fas fa-eraser me-2"></i> Limpar Formulário
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>]
